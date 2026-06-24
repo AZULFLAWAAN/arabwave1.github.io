@@ -1,0 +1,276 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>ARABWAVE1 | Rai Artist</title>
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700;900&display=swap" rel="stylesheet" />
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+
+    body {
+      min-height: 100vh;
+      background: #0a0a0a;
+      font-family: 'Montserrat', sans-serif;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 2rem 1rem;
+    }
+
+    /* Ambient glow */
+    body::before {
+      content: '';
+      position: fixed;
+      top: -200px;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 600px;
+      height: 600px;
+      background: radial-gradient(circle, rgba(180,30,30,0.18) 0%, transparent 70%);
+      pointer-events: none;
+      z-index: 0;
+    }
+
+    .container {
+      position: relative;
+      z-index: 1;
+      width: 100%;
+      max-width: 420px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 1.5rem;
+    }
+
+    /* Avatar */
+    .avatar-wrap {
+      position: relative;
+      width: 100px;
+      height: 100px;
+    }
+    .avatar-wrap::before {
+      content: '';
+      position: absolute;
+      inset: -3px;
+      border-radius: 50%;
+      background: linear-gradient(135deg, #c0392b, #f39c12, #c0392b);
+      z-index: 0;
+      animation: spin 4s linear infinite;
+    }
+    @keyframes spin { to { transform: rotate(360deg); } }
+    .avatar {
+      position: relative;
+      z-index: 1;
+      width: 100%;
+      height: 100%;
+      border-radius: 50%;
+      background: #1a1a1a;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 2.2rem;
+      font-weight: 900;
+      color: #fff;
+      letter-spacing: -1px;
+      border: 3px solid #0a0a0a;
+    }
+
+    /* Name & tagline */
+    .name {
+      font-size: 1.8rem;
+      font-weight: 900;
+      color: #fff;
+      letter-spacing: 3px;
+      text-transform: uppercase;
+      text-align: center;
+    }
+    .name span {
+      color: #c0392b;
+    }
+    .tagline {
+      font-size: 0.75rem;
+      color: #888;
+      letter-spacing: 4px;
+      text-transform: uppercase;
+      text-align: center;
+      margin-top: -0.8rem;
+      direction: ltr;
+    }
+
+    /* Wave divider */
+    .divider {
+      width: 60px;
+      height: 2px;
+      background: linear-gradient(90deg, transparent, #c0392b, transparent);
+      border-radius: 2px;
+    }
+
+    /* Links */
+    .links {
+      width: 100%;
+      display: flex;
+      flex-direction: column;
+      gap: 0.85rem;
+    }
+
+    .link-btn {
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+      width: 100%;
+      padding: 1rem 1.4rem;
+      border-radius: 14px;
+      text-decoration: none;
+      border: 1px solid rgba(255,255,255,0.07);
+      background: rgba(255,255,255,0.04);
+      backdrop-filter: blur(8px);
+      transition: all 0.25s ease;
+      position: relative;
+      overflow: hidden;
+    }
+    .link-btn::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(135deg, rgba(192,57,43,0.12), transparent);
+      opacity: 0;
+      transition: opacity 0.25s;
+    }
+    .link-btn:hover::before { opacity: 1; }
+    .link-btn:hover {
+      border-color: rgba(192,57,43,0.5);
+      transform: translateY(-2px);
+      box-shadow: 0 8px 30px rgba(192,57,43,0.15);
+    }
+
+    .link-icon {
+      width: 40px;
+      height: 40px;
+      border-radius: 10px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.3rem;
+      flex-shrink: 0;
+    }
+    .icon-spotify { background: rgba(30,215,96,0.15); }
+    .icon-youtube { background: rgba(255,0,0,0.15); }
+    .icon-apple   { background: rgba(250,80,80,0.15); }
+    .icon-tiktok  { background: rgba(0,242,234,0.1); }
+    .icon-amazon  { background: rgba(255,153,0,0.15); }
+    .icon-sc      { background: rgba(255,85,0,0.15); }
+
+    .link-text {
+      flex: 1;
+    }
+    .link-title {
+      font-size: 0.85rem;
+      font-weight: 700;
+      color: #fff;
+      letter-spacing: 1px;
+      text-transform: uppercase;
+    }
+    .link-sub {
+      font-size: 0.7rem;
+      color: #666;
+      margin-top: 2px;
+    }
+
+    .link-arrow {
+      color: #444;
+      font-size: 0.9rem;
+      transition: color 0.2s, transform 0.2s;
+    }
+    .link-btn:hover .link-arrow {
+      color: #c0392b;
+      transform: translateX(-4px);
+    }
+
+    /* Footer */
+    .footer {
+      font-size: 0.65rem;
+      color: #333;
+      letter-spacing: 3px;
+      text-transform: uppercase;
+      text-align: center;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+
+    <div class="avatar-wrap">
+      <div class="avatar">AW</div>
+    </div>
+
+    <div>
+      <div class="name">ARAB<span>WAVE</span>1</div>
+      <div class="tagline">Moroccan Rai · Afro Arab · New Wave</div>
+    </div>
+
+    <div class="divider"></div>
+
+    <div class="links">
+
+      <a class="link-btn" href="https://open.spotify.com/artist/5Ikro4faH6hRPAc6tPfwiH" target="_blank">
+        <div class="link-icon icon-spotify">🎧</div>
+        <div class="link-text">
+          <div class="link-title">Spotify</div>
+          <div class="link-sub">استمع للموسيقى</div>
+        </div>
+        <div class="link-arrow">←</div>
+      </a>
+
+      <a class="link-btn" href="https://www.youtube.com/@ArabWave1" target="_blank">
+        <div class="link-icon icon-youtube">▶️</div>
+        <div class="link-text">
+          <div class="link-title">YouTube</div>
+          <div class="link-sub">فيديوهات وبلايليست</div>
+        </div>
+        <div class="link-arrow">←</div>
+      </a>
+
+      <a class="link-btn" href="https://music.apple.com/us/artist/arabwave1/6773727098" target="_blank">
+        <div class="link-icon icon-apple">🍎</div>
+        <div class="link-text">
+          <div class="link-title">Apple Music</div>
+          <div class="link-sub">على Apple Music</div>
+        </div>
+        <div class="link-arrow">←</div>
+      </a>
+
+      <a class="link-btn" href="https://www.tiktok.com/@arabwave" target="_blank">
+        <div class="link-icon icon-tiktok">🎵</div>
+        <div class="link-text">
+          <div class="link-title">TikTok</div>
+          <div class="link-sub">@arabwave</div>
+        </div>
+        <div class="link-arrow">←</div>
+      </a>
+
+      <a class="link-btn" href="https://music.amazon.com/artists/arabwave1" target="_blank">
+        <div class="link-icon icon-amazon">🎶</div>
+        <div class="link-text">
+          <div class="link-title">Amazon Music</div>
+          <div class="link-sub">على Amazon Music</div>
+        </div>
+        <div class="link-arrow">←</div>
+      </a>
+
+      <a class="link-btn" href="https://soundcloud.com/arabwave1official" target="_blank">
+        <div class="link-icon icon-sc">☁️</div>
+        <div class="link-text">
+          <div class="link-title">SoundCloud</div>
+          <div class="link-sub">استمع مجاناً</div>
+        </div>
+        <div class="link-arrow">←</div>
+      </a>
+
+    </div>
+
+    <div class="footer">🌊 Arab Soul · New Wave · 2026</div>
+
+  </div>
+</body>
+</html>
