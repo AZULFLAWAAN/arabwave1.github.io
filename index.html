@@ -3,274 +3,353 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>ARABWAVE1 | Rai Artist</title>
-  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700;900&display=swap" rel="stylesheet" />
+  <title>ARABWAVE1 | Official Links</title>
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@700;900&family=Montserrat:wght@400;600;700;900&display=swap" rel="stylesheet" />
   <style>
     * { margin: 0; padding: 0; box-sizing: border-box; }
 
+    :root {
+      --black: #050505;
+      --card: rgba(15, 15, 15, 0.72);
+      --gold: #d4af37;
+      --gold-light: #fff2a8;
+      --gold-dark: #8c6b14;
+      --text: #ffffff;
+      --muted: #9c9c9c;
+    }
+
+    html { scroll-behavior: smooth; }
+
     body {
       min-height: 100vh;
-      background: #0a0a0a;
+      background:
+        radial-gradient(circle at top, rgba(212,175,55,0.26) 0%, transparent 32%),
+        radial-gradient(circle at bottom, rgba(140,107,20,0.18) 0%, transparent 38%),
+        linear-gradient(180deg, #0c0c0c 0%, #030303 100%);
       font-family: 'Montserrat', sans-serif;
+      color: var(--text);
       display: flex;
       align-items: center;
       justify-content: center;
-      padding: 2rem 1rem;
+      padding: 16px;
+      overflow-x: hidden;
     }
 
-    /* Ambient glow */
     body::before {
       content: '';
       position: fixed;
-      top: -200px;
-      left: 50%;
-      transform: translateX(-50%);
-      width: 600px;
-      height: 600px;
-      background: radial-gradient(circle, rgba(180,30,30,0.18) 0%, transparent 70%);
+      inset: 0;
+      background-image:
+        linear-gradient(rgba(255,255,255,0.025) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(255,255,255,0.025) 1px, transparent 1px);
+      background-size: 36px 36px;
+      mask-image: radial-gradient(circle at center, black 0%, transparent 78%);
       pointer-events: none;
-      z-index: 0;
     }
 
-    .container {
+    .phone {
       position: relative;
-      z-index: 1;
-      width: 100%;
-      max-width: 420px;
+      width: min(100%, 390px);
+      min-height: 760px;
+      border-radius: 42px;
+      padding: 14px;
+      background: linear-gradient(145deg, rgba(255,242,168,0.75), rgba(140,107,20,0.35), rgba(255,242,168,0.2));
+      box-shadow:
+        0 24px 80px rgba(0,0,0,0.75),
+        0 0 55px rgba(212,175,55,0.18);
+    }
+
+    .screen {
+      position: relative;
+      min-height: 732px;
+      border-radius: 32px;
+      overflow: hidden;
+      background:
+        linear-gradient(180deg, rgba(255,255,255,0.06), rgba(255,255,255,0.015)),
+        #070707;
+      border: 1px solid rgba(255,255,255,0.08);
+    }
+
+    .screen::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 118px;
+      height: 28px;
+      border-radius: 0 0 18px 18px;
+      background: #050505;
+      z-index: 5;
+    }
+
+    .hero {
+      position: relative;
+      padding: 54px 24px 20px;
+      min-height: 285px;
       display: flex;
       flex-direction: column;
       align-items: center;
-      gap: 1.5rem;
+      justify-content: flex-end;
+      text-align: center;
+      isolation: isolate;
     }
 
-    /* Avatar */
-    .avatar-wrap {
-      position: relative;
-      width: 100px;
-      height: 100px;
-    }
-    .avatar-wrap::before {
+    .hero::before {
       content: '';
       position: absolute;
-      inset: -3px;
-      border-radius: 50%;
-      background: linear-gradient(135deg, #c0392b, #f39c12, #c0392b);
-      z-index: 0;
-      animation: spin 4s linear infinite;
-    }
-    @keyframes spin { to { transform: rotate(360deg); } }
-    .avatar {
-      position: relative;
-      z-index: 1;
-      width: 100%;
-      height: 100%;
-      border-radius: 50%;
-      background: #1a1a1a;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-size: 2.2rem;
-      font-weight: 900;
-      color: #fff;
-      letter-spacing: -1px;
-      border: 3px solid #0a0a0a;
+      inset: 0;
+      background:
+        radial-gradient(circle at 50% 24%, rgba(255,242,168,0.26), transparent 22%),
+        linear-gradient(180deg, rgba(0,0,0,0.08), #070707 88%);
+      z-index: -2;
     }
 
-    /* Name & tagline */
-    .name {
-      font-size: 1.8rem;
+    .hero::after {
+      content: '';
+      position: absolute;
+      top: 64px;
+      width: 190px;
+      height: 190px;
+      border-radius: 50%;
+      background:
+        radial-gradient(circle, rgba(255,242,168,0.18), transparent 55%),
+        conic-gradient(from 120deg, transparent, rgba(212,175,55,0.32), transparent, rgba(255,242,168,0.25), transparent);
+      filter: blur(1px);
+      z-index: -1;
+      animation: rotateGlow 10s linear infinite;
+    }
+
+    @keyframes rotateGlow { to { transform: rotate(360deg); } }
+
+    .logo {
+      width: 96px;
+      height: 96px;
+      border-radius: 30px;
+      display: grid;
+      place-items: center;
+      margin-bottom: 22px;
+      background:
+        linear-gradient(145deg, rgba(255,242,168,0.22), rgba(212,175,55,0.08)),
+        rgba(255,255,255,0.035);
+      border: 1px solid rgba(255,242,168,0.45);
+      box-shadow: 0 0 36px rgba(212,175,55,0.26), inset 0 0 18px rgba(255,255,255,0.06);
+    }
+
+    .logo span {
+      font-family: 'Cinzel', serif;
+      font-size: 2.15rem;
       font-weight: 900;
-      color: #fff;
-      letter-spacing: 3px;
-      text-transform: uppercase;
-      text-align: center;
+      letter-spacing: -2px;
+      background: linear-gradient(180deg, var(--gold-light), var(--gold), var(--gold-dark));
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
     }
-    .name span {
-      color: #c0392b;
-    }
-    .tagline {
-      font-size: 0.75rem;
-      color: #888;
-      letter-spacing: 4px;
-      text-transform: uppercase;
-      text-align: center;
-      margin-top: -0.8rem;
+
+    h1 {
+      font-family: 'Cinzel', serif;
+      font-size: clamp(2.15rem, 11vw, 3rem);
+      line-height: 0.95;
+      letter-spacing: 2px;
+      background: linear-gradient(180deg, #fff7c0 0%, #d4af37 48%, #8c6b14 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      text-shadow: 0 0 28px rgba(212,175,55,0.28);
       direction: ltr;
     }
 
-    /* Wave divider */
-    .divider {
-      width: 60px;
-      height: 2px;
-      background: linear-gradient(90deg, transparent, #c0392b, transparent);
-      border-radius: 2px;
+    .subtitle {
+      margin-top: 12px;
+      font-size: 0.78rem;
+      color: #d7d7d7;
+      letter-spacing: 2.4px;
+      text-transform: uppercase;
+      direction: ltr;
     }
 
-    /* Links */
+    .wave-line {
+      width: 150px;
+      height: 2px;
+      margin: 18px auto 0;
+      border-radius: 999px;
+      background: linear-gradient(90deg, transparent, var(--gold-light), var(--gold), transparent);
+      box-shadow: 0 0 16px rgba(212,175,55,0.5);
+    }
+
+    .content {
+      padding: 16px 18px 22px;
+    }
+
+    .mini-card {
+      padding: 13px 14px;
+      border-radius: 22px;
+      background: rgba(255,255,255,0.045);
+      border: 1px solid rgba(212,175,55,0.22);
+      color: #cfcfcf;
+      font-size: 0.74rem;
+      line-height: 1.55;
+      text-align: center;
+      margin-bottom: 14px;
+      direction: ltr;
+    }
+
     .links {
-      width: 100%;
       display: flex;
       flex-direction: column;
-      gap: 0.85rem;
+      gap: 11px;
     }
 
     .link-btn {
+      position: relative;
       display: flex;
       align-items: center;
-      gap: 1rem;
+      gap: 12px;
       width: 100%;
-      padding: 1rem 1.4rem;
-      border-radius: 14px;
+      min-height: 64px;
+      padding: 12px 14px;
+      border-radius: 20px;
       text-decoration: none;
-      border: 1px solid rgba(255,255,255,0.07);
-      background: rgba(255,255,255,0.04);
-      backdrop-filter: blur(8px);
-      transition: all 0.25s ease;
-      position: relative;
+      color: var(--text);
+      background: linear-gradient(135deg, rgba(255,255,255,0.075), rgba(255,255,255,0.025));
+      border: 1px solid rgba(255,255,255,0.09);
+      box-shadow: inset 0 1px 0 rgba(255,255,255,0.08);
       overflow: hidden;
+      direction: ltr;
+      transition: transform .25s ease, border-color .25s ease, box-shadow .25s ease;
     }
+
     .link-btn::before {
       content: '';
       position: absolute;
       inset: 0;
-      background: linear-gradient(135deg, rgba(192,57,43,0.12), transparent);
-      opacity: 0;
-      transition: opacity 0.25s;
-    }
-    .link-btn:hover::before { opacity: 1; }
-    .link-btn:hover {
-      border-color: rgba(192,57,43,0.5);
-      transform: translateY(-2px);
-      box-shadow: 0 8px 30px rgba(192,57,43,0.15);
+      background: linear-gradient(120deg, transparent, rgba(212,175,55,0.14), transparent);
+      transform: translateX(-120%);
+      transition: transform .55s ease;
     }
 
-    .link-icon {
-      width: 40px;
-      height: 40px;
-      border-radius: 10px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-size: 1.3rem;
+    .link-btn:hover,
+    .link-btn:active {
+      transform: translateY(-2px) scale(1.01);
+      border-color: rgba(212,175,55,0.62);
+      box-shadow: 0 12px 34px rgba(212,175,55,0.14);
+    }
+
+    .link-btn:hover::before,
+    .link-btn:active::before { transform: translateX(120%); }
+
+    .icon {
+      width: 42px;
+      height: 42px;
+      border-radius: 15px;
+      display: grid;
+      place-items: center;
+      font-size: 1.28rem;
+      background: rgba(212,175,55,0.12);
+      border: 1px solid rgba(212,175,55,0.25);
       flex-shrink: 0;
     }
-    .icon-spotify { background: rgba(30,215,96,0.15); }
-    .icon-youtube { background: rgba(255,0,0,0.15); }
-    .icon-apple   { background: rgba(250,80,80,0.15); }
-    .icon-tiktok  { background: rgba(0,242,234,0.1); }
-    .icon-amazon  { background: rgba(255,153,0,0.15); }
-    .icon-sc      { background: rgba(255,85,0,0.15); }
 
-    .link-text {
-      flex: 1;
-    }
-    .link-title {
-      font-size: 0.85rem;
-      font-weight: 700;
-      color: #fff;
+    .txt { flex: 1; position: relative; z-index: 1; }
+    .title {
+      font-size: 0.86rem;
+      font-weight: 900;
       letter-spacing: 1px;
       text-transform: uppercase;
     }
-    .link-sub {
-      font-size: 0.7rem;
-      color: #666;
-      margin-top: 2px;
+    .sub {
+      margin-top: 4px;
+      color: var(--muted);
+      font-size: 0.69rem;
+      direction: rtl;
     }
 
-    .link-arrow {
-      color: #444;
-      font-size: 0.9rem;
-      transition: color 0.2s, transform 0.2s;
-    }
-    .link-btn:hover .link-arrow {
-      color: #c0392b;
-      transform: translateX(-4px);
+    .arrow {
+      position: relative;
+      z-index: 1;
+      width: 28px;
+      height: 28px;
+      border-radius: 50%;
+      display: grid;
+      place-items: center;
+      color: var(--gold-light);
+      background: rgba(212,175,55,0.10);
+      border: 1px solid rgba(212,175,55,0.18);
     }
 
-    /* Footer */
     .footer {
-      font-size: 0.65rem;
-      color: #333;
-      letter-spacing: 3px;
-      text-transform: uppercase;
+      padding: 18px 10px 4px;
       text-align: center;
+      color: #6f6f6f;
+      font-size: 0.64rem;
+      letter-spacing: 2.2px;
+      text-transform: uppercase;
+      direction: ltr;
+    }
+
+    @media (max-width: 420px) {
+      body { padding: 0; align-items: stretch; }
+      .phone { width: 100%; min-height: 100vh; border-radius: 0; padding: 0; background: transparent; box-shadow: none; }
+      .screen { min-height: 100vh; border-radius: 0; border: 0; }
+      .screen::before { display: none; }
+      .hero { padding-top: 42px; min-height: 270px; }
+      .content { padding-left: 16px; padding-right: 16px; }
     }
   </style>
 </head>
 <body>
-  <div class="container">
+  <main class="phone">
+    <section class="screen">
+      <header class="hero">
+        <div class="logo"><span>AW</span></div>
+        <h1>ARABWAVE1</h1>
+        <p class="subtitle">Ride The Wave</p>
+        <div class="wave-line"></div>
+      </header>
 
-    <div class="avatar-wrap">
-      <div class="avatar">AW</div>
-    </div>
+      <section class="content">
+        <div class="mini-card">Arabic Rai • Emotional Music • Modern Vibes</div>
 
-    <div>
-      <div class="name">ARAB<span>WAVE</span>1</div>
-      <div class="tagline">Moroccan Rai · Afro Arab · New Wave</div>
-    </div>
+        <div class="links">
+          <a class="link-btn" href="https://open.spotify.com/artist/5Ikro4faH6hRPAc6tPfwiH?si=EnjGkmm0RGS-WfLbHxqRJA" target="_blank" rel="noopener">
+            <div class="icon">🎧</div>
+            <div class="txt"><div class="title">Spotify</div><div class="sub">استمع للموسيقى</div></div>
+            <div class="arrow">›</div>
+          </a>
 
-    <div class="divider"></div>
+          <a class="link-btn" href="https://www.youtube.com/@ArabWave1" target="_blank" rel="noopener">
+            <div class="icon">▶️</div>
+            <div class="txt"><div class="title">YouTube</div><div class="sub">فيديوهات وبلايليست</div></div>
+            <div class="arrow">›</div>
+          </a>
 
-    <div class="links">
+          <a class="link-btn" href="https://music.youtube.com/@arabwave1?si=OAudTxnBORCGk71k" target="_blank" rel="noopener">
+            <div class="icon">🎵</div>
+            <div class="txt"><div class="title">YouTube Music</div><div class="sub">على YouTube Music</div></div>
+            <div class="arrow">›</div>
+          </a>
 
-      <a class="link-btn" href="https://open.spotify.com/artist/5Ikro4faH6hRPAc6tPfwiH" target="_blank">
-        <div class="link-icon icon-spotify">🎧</div>
-        <div class="link-text">
-          <div class="link-title">Spotify</div>
-          <div class="link-sub">استمع للموسيقى</div>
+          <a class="link-btn" href="https://music.apple.com/us/artist/arabwave1/6773727098" target="_blank" rel="noopener">
+            <div class="icon">🍎</div>
+            <div class="txt"><div class="title">Apple Music</div><div class="sub">على Apple Music</div></div>
+            <div class="arrow">›</div>
+          </a>
+
+          <a class="link-btn" href="https://www.tiktok.com/@arabwave1" target="_blank" rel="noopener">
+            <div class="icon">🎵</div>
+            <div class="txt"><div class="title">TikTok</div><div class="sub">@arabwave1</div></div>
+            <div class="arrow">›</div>
+          </a>
+
+          <a class="link-btn" href="https://www.instagram.com/arabwave1official" target="_blank" rel="noopener">
+            <div class="icon">📸</div>
+            <div class="txt"><div class="title">Instagram</div><div class="sub">@arabwave1official</div></div>
+            <div class="arrow">›</div>
+          </a>
         </div>
-        <div class="link-arrow">←</div>
-      </a>
 
-      <a class="link-btn" href="https://www.youtube.com/@ArabWave1" target="_blank">
-        <div class="link-icon icon-youtube">▶️</div>
-        <div class="link-text">
-          <div class="link-title">YouTube</div>
-          <div class="link-sub">فيديوهات وبلايليست</div>
-        </div>
-        <div class="link-arrow">←</div>
-      </a>
-
-      <a class="link-btn" href="https://music.apple.com/us/artist/arabwave1/6773727098" target="_blank">
-        <div class="link-icon icon-apple">🍎</div>
-        <div class="link-text">
-          <div class="link-title">Apple Music</div>
-          <div class="link-sub">على Apple Music</div>
-        </div>
-        <div class="link-arrow">←</div>
-      </a>
-
-      <a class="link-btn" href="https://www.tiktok.com/@arabwave" target="_blank">
-        <div class="link-icon icon-tiktok">🎵</div>
-        <div class="link-text">
-          <div class="link-title">TikTok</div>
-          <div class="link-sub">@arabwave</div>
-        </div>
-        <div class="link-arrow">←</div>
-      </a>
-
-      <a class="link-btn" href="https://music.amazon.com/artists/arabwave1" target="_blank">
-        <div class="link-icon icon-amazon">🎶</div>
-        <div class="link-text">
-          <div class="link-title">Amazon Music</div>
-          <div class="link-sub">على Amazon Music</div>
-        </div>
-        <div class="link-arrow">←</div>
-      </a>
-
-      <a class="link-btn" href="https://soundcloud.com/arabwave1official" target="_blank">
-        <div class="link-icon icon-sc">☁️</div>
-        <div class="link-text">
-          <div class="link-title">SoundCloud</div>
-          <div class="link-sub">استمع مجاناً</div>
-        </div>
-        <div class="link-arrow">←</div>
-      </a>
-
-    </div>
-
-    <div class="footer">🌊 Arab Soul · New Wave · 2026</div>
-
-  </div>
+        <footer class="footer">© 2026 ARABWAVE1 · OFFICIAL LINKS</footer>
+      </section>
+    </section>
+  </main>
 </body>
 </html>
